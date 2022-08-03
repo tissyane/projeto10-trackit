@@ -19,7 +19,7 @@ export default function Habits() {
           <Title>Meus hábitos</Title>
           <SmallButton onClick={() => setShowForm(true)}>+</SmallButton>
         </Top>
-        {showForm ? <HabitsForm /> : ""}
+        {showForm ? <HabitsForm setShowForm={setShowForm} /> : ""}
       </Page>
       <Menu />
     </>
