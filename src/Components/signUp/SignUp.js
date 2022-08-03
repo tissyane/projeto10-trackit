@@ -2,29 +2,35 @@ import { Button } from "../../Commons/Styles/Button";
 import { useState } from "react";
 import Logo from "../Commons/Logo";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signUp } from "../../Services/api";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function SignUp() {
   const [form, setForm] = useState({});
   const [disabled, setDisabled] = useState(false);
+  const navigate = useNavigate();
 
   function handleForm({ name, value }) {
     setForm({
       ...form,
       [name]: value,
     });
-    console.log(form);
   }
 
   function sendForm(e) {
     e.preventDefault();
 
     const promise = signUp(form);
-    promise.then((response) => {});
+    promise.then((response) => {
+      navigate("/");
+    });
+
     promise.catch((error) => {
       alert("Verifique seus dados!");
+      setDisabled(false);
     });
+    setDisabled(true);
   }
 
   return (
@@ -94,11 +100,15 @@ export default function SignUp() {
               }
             />
           </div>
-          <Button type="submit" onClick={sendForm}>
-            Cadastrar
+          <Button type="submit" onClick={sendForm} disabled={disabled}>
+            {disabled ? (
+              <ThreeDots color="#FFF" height={20} width={50} />
+            ) : (
+              "Cadastrar"
+            )}
           </Button>
         </Form>
-        <Link className="link" to="/habitos">
+        <Link className="link" to="/">
           Já tem uma conta? Faça login!
         </Link>
       </Container>
@@ -128,9 +138,15 @@ const Form = styled.form`
     border-radius: 5px;
     font-size: 20px;
     line-height: 25px;
+    background-color: #ffffff;
 
     &::placeholder {
       color: #d4d4d4;
+    }
+
+    &:disabled {
+      background-color: var(--background-gray);
+      color: var(--background-gray);
     }
   }
 `;

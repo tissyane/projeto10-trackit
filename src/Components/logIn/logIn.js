@@ -3,9 +3,9 @@ import { useState } from "react";
 import Logo from "../Commons/Logo";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { signUp } from "../../Services/api";
+import { logIn } from "../../Services/api";
 
-export default function SignUp() {
+export default function Login() {
   const [form, setForm] = useState({});
   const [disabled, setDisabled] = useState(false);
 
@@ -20,7 +20,7 @@ export default function SignUp() {
   function sendForm(e) {
     e.preventDefault();
 
-    const promise = signUp(form);
+    const promise = logIn(form);
     promise.then((response) => {});
     promise.catch((error) => {
       alert("Verifique seus dados!");
@@ -62,43 +62,11 @@ export default function SignUp() {
               }
             />
           </div>
-          <div>
-            <input
-              id="nome"
-              name="name"
-              type="text"
-              placeholder="nome"
-              disabled={disabled}
-              required
-              onChange={(e) =>
-                handleForm({
-                  name: e.target.name,
-                  value: e.target.value,
-                })
-              }
-            />
-          </div>
-          <div>
-            <input
-              id="foto"
-              name="image"
-              type="url"
-              placeholder="foto"
-              disabled={disabled}
-              required
-              onChange={(e) =>
-                handleForm({
-                  name: e.target.name,
-                  value: e.target.value,
-                })
-              }
-            />
-          </div>
           <Button type="submit" onClick={sendForm}>
             Entrar
           </Button>
         </Form>
-        <Link className="link" to="/habitos">
+        <Link className="link" to="/cadastro">
           Não tem uma conta? Cadastre-se!
         </Link>
       </Container>

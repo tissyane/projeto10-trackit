@@ -10,4 +10,11 @@ export const Button = styled.button`
 
   font-size: 20.98px;
   line-height: 26.22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:disabled {
+    opacity: 0.7;
+  }
 `;
