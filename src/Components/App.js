@@ -12,11 +12,12 @@ import Historic from "./historic/Historic";
 
 export default function App() {
   const [login, setLogin] = useState(null);
+  const [percentage, setPercentage] = useState(75);
 
   return (
     <>
       <GlobalStyle />
-      <Context.Provider value={{ login, setLogin }}>
+      <Context.Provider value={{ login, setLogin, percentage, setPercentage }}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Login />} />

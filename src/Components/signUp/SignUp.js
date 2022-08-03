@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -11,7 +12,12 @@ import { Button } from "../../Styles/Button";
 import { Input } from "../../Styles/Input";
 
 export default function SignUp() {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    name: "",
+    image: "",
+  });
   const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
 

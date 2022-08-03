@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -9,9 +10,11 @@ import Logo from "../commons/Logo";
 
 import { Button } from "../../Styles/Button";
 import { Input } from "../../Styles/Input";
+import Context from "../Context";
 
 export default function Login() {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({ email: "", password: "" });
+  const { setLogin } = useContext(Context);
   const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
 
@@ -27,7 +30,8 @@ export default function Login() {
 
     const promise = logIn(form);
     promise.then((response) => {
-      navigate("/hoje");
+      setLogin(response.data);
+      navigate("/habitos"); //TODO:Change to /hoje
     });
 
     promise.catch((error) => {
