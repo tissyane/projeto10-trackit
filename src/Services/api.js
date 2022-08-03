@@ -6,14 +6,11 @@ function signUp(body) {
   return axios.post(`${URL}/auth/sign-up`, body);
 }
 
-/* Requições Post*/
-
-/* Para fazer login */
-
 function logIn(body) {
-  const promise = axios.post(`${URL}/auth/login`, body);
-  return promise;
+  return axios.post(`${URL}/auth/login`, body);
 }
+
+/* Requições Post*/
 
 /* Para criar hábito */
 
