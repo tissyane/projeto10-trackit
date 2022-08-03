@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import GlobalStyle from "../Commons/Styles/GlobalStyles";
+import GlobalStyle from "../Styles/GlobalStyles";
 import Context from "./Context";
 
-import Habits from "./Habits/Habits";
-import Login from "./logIn/logIn";
+import Login from "./logIn/LogIn";
 import SignUp from "./signUp/SignUp";
+import Today from "./today/today";
+import Habits from "./habits/Habits";
 
 export default function App() {
   const [login, setLogin] = useState(null);
@@ -19,11 +20,11 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/cadastro" element={<SignUp />} />
-            <Route path="/habitos" element={<Habits />} />
+            {/* <Route path="/habitos" element={<Habits />} /> */}
 
-            {/*  <Route path="/hoje" element={<Today />} />
-                    <Route path="/habitos" element={<Habits />} /> 
-          <Route path="/historico" element={<Historic />} />  */}
+            <Route path="/hoje" element={<Today />} />
+
+            {/* <Route path="/historico" element={<Historic />} />  */}
           </Routes>
         </BrowserRouter>
       </Context.Provider>

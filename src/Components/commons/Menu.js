@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
-export const Menu = styled.footer`
+export default function Menu() {
+  return (
+    <Wrapper>
+      <div>Hábitos</div> <div>Hoje</div> <div>Histórico</div>
+    </Wrapper>
+  );
+}
+
+const Wrapper = styled.footer`
   width: 100%;
   max-width: 614px;
   height: 70px;

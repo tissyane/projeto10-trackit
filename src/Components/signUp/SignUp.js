@@ -1,11 +1,14 @@
-import { Button } from "../../Commons/Styles/Button";
-import { useState } from "react";
-import Logo from "../Commons/Logo";
-import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import { signUp } from "../../Services/api";
+import { useState } from "react";
+import styled from "styled-components";
+
 import { ThreeDots } from "react-loader-spinner";
-import { Input } from "../../Commons/Input";
+import { signUp } from "../../Services/api";
+
+import Logo from "../commons/Logo";
+
+import { Button } from "../../Styles/Button";
+import { Input } from "../../Styles/Input";
 
 export default function SignUp() {
   const [form, setForm] = useState({});
@@ -38,7 +41,7 @@ export default function SignUp() {
     <>
       <Logo />
       <Container>
-        <Form>
+        <Form onSubmit={sendForm}>
           <Input
             name="email"
             type="email"
@@ -97,7 +100,7 @@ export default function SignUp() {
             }
           />
 
-          <Button type="submit" onClick={sendForm} disabled={disabled}>
+          <Button type="submit" disabled={disabled}>
             {disabled ? (
               <ThreeDots color="#FFF" height={20} width={50} />
             ) : (
@@ -120,6 +123,7 @@ const Container = styled.div`
   justify-content: center;
   .link {
     color: var(--blue);
+    text-decoration: underline;
   }
 `;
 

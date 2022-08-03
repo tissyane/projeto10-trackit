@@ -1,11 +1,14 @@
-import { Button } from "../../Commons/Styles/Button";
-import { useState } from "react";
-import Logo from "../Commons/Logo";
-import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import { logIn } from "../../Services/api";
+import { useState } from "react";
+import styled from "styled-components";
+
 import { ThreeDots } from "react-loader-spinner";
-import { Input } from "../../Commons/Input";
+import { logIn } from "../../Services/api";
+
+import Logo from "../commons/Logo";
+
+import { Button } from "../../Styles/Button";
+import { Input } from "../../Styles/Input";
 
 export default function Login() {
   const [form, setForm] = useState({});
@@ -24,7 +27,7 @@ export default function Login() {
 
     const promise = logIn(form);
     promise.then((response) => {
-      navigate("/habitos");
+      navigate("/hoje");
     });
 
     promise.catch((error) => {
@@ -38,7 +41,7 @@ export default function Login() {
     <>
       <Logo />
       <Container>
-        <Form>
+        <Form onSubmit={sendForm}>
           <Input
             name="email"
             type="email"
@@ -66,7 +69,7 @@ export default function Login() {
               })
             }
           />
-          <Button type="submit" onClick={sendForm} disabled={disabled}>
+          <Button type="submit" disabled={disabled}>
             {disabled ? (
               <ThreeDots color="#FFF" height={20} width={50} />
             ) : (
@@ -89,6 +92,7 @@ const Container = styled.div`
   justify-content: center;
   .link {
     color: var(--blue);
+    text-decoration: underline;
   }
 `;
 
