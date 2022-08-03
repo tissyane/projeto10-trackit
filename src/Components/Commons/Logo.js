@@ -11,17 +11,20 @@ export default function Logo() {
 }
 
 const ContainerLogo = styled.div`
+  margin-top: 68px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "Playball", cursive;
-  font-size: 68.982px;
-  line-height: 86px;
-
-  color: var(--dark-blue);
 
   img {
-    width: 180px;
+    width: 200px;
+  }
+
+  h1 {
+    font-family: "Playball", cursive;
+    font-size: 68.982px;
+    line-height: 86px;
+    color: var(--dark-blue);
   }
 `;

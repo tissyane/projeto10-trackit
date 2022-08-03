@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import GlobalStyle from "../Commons/Styles/GlobalStyles";
 import Context from "./Context";
 
@@ -16,6 +17,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Login />} />
+            <Route path="/habitos" element={<Habits />} />
             {/* <Route path="/cadastro" element={<SignUp />} />
           <Route path="/hoje" element={<Today />} />
                     <Route path="/habitos" element={<Habits />} /> 

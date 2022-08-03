@@ -49,6 +49,7 @@ strong {
   font-weight: bold;
 }
 
+
 a {
   color: inherit;
   text-decoration: inherit;
@@ -58,19 +59,20 @@ a {
   box-sizing: border-box;
 }
 
-body {
-	font-family: "Lexend Deca", sans-serif;
-	background-color: black;
-}
+body, input, button {
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 400;
 
-.root {
+  }
+
+/* .root {
 	width: 100vw;
 	
  max-width: 614px;
   height: 100vh;
   margin: 0 auto;  
   background-color: #FFFFFF;
-}
+} */
 
 :root {
   --dark-blue: #126ba5;

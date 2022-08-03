@@ -95,11 +95,11 @@ export default function SignUp() {
             />
           </div>
           <Button type="submit" onClick={sendForm}>
-            Cadastrar
+            Entrar
           </Button>
         </Form>
         <Link className="link" to="/habitos">
-          Já tem uma conta? Faça login!
+          Não tem uma conta? Cadastre-se!
         </Link>
       </Container>
     </>

@@ -2,14 +2,11 @@ import axios from "axios";
 
 const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit";
 
-/* Requições Post 
-
-Para fazer cadastro */
-
 function signUp(body) {
-  const promise = axios.post(`${URL}/auth/sign-up`, body);
-  return promise;
+  return axios.post(`${URL}/auth/sign-up`, body);
 }
+
+/* Requições Post*/
 
 /* Para fazer login */
 
