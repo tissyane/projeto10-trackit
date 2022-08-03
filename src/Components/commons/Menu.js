@@ -1,9 +1,31 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 export default function Menu() {
+  const percentage = 66;
+
   return (
     <Wrapper>
-      <div>Hábitos</div> <div>Hoje</div> <div>Histórico</div>
+      <Link to="/habitos">Hábitos</Link>
+
+      <Link style={{ width: 90, height: 90, marginBottom: 50 }} to="/hoje">
+        <CircularProgressbar
+          value={percentage}
+          text={`Hoje`}
+          background
+          backgroundPadding={6}
+          styles={buildStyles({
+            backgroundColor: "#3e98c7",
+            textColor: "#fff",
+            pathColor: "#fff",
+            trailColor: "transparent",
+          })}
+        />
+      </Link>
+
+      <Link to="/historico">Histórico</Link>
     </Wrapper>
   );
 }

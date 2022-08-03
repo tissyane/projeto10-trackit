@@ -6,8 +6,9 @@ import Context from "./Context";
 
 import Login from "./logIn/LogIn";
 import SignUp from "./signUp/SignUp";
-import Today from "./today/today";
+import Today from "./today/Today";
 import Habits from "./habits/Habits";
+import Historic from "./historic/Historic";
 
 export default function App() {
   const [login, setLogin] = useState(null);
@@ -20,11 +21,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/cadastro" element={<SignUp />} />
-            {/* <Route path="/habitos" element={<Habits />} /> */}
-
+            <Route path="/habitos" element={<Habits />} />
             <Route path="/hoje" element={<Today />} />
-
-            {/* <Route path="/historico" element={<Historic />} />  */}
+            <Route path="/historico" element={<Historic />} />
           </Routes>
         </BrowserRouter>
       </Context.Provider>

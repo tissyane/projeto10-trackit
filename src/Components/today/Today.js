@@ -1,19 +1,16 @@
-import { Header } from "../../Styles/Header";
+import Header from "../commons/Header";
 import Menu from "../commons/Menu";
 import { Page } from "../../Styles/Page";
 import { Title } from "../../Styles/Title";
 
-import user from "../../assets/images/user.png";
-
 export default function Today() {
+  const dayjs = require("dayjs");
+
   return (
     <>
-      <Header>
-        <h1>TrackIt</h1>
-        <img src={user} alt="user_img" />
-      </Header>
+      <Header />
       <Page>
-        <Title>Meus hábitos</Title>
+        <Title>{dayjs().format("dddd, DD/MM")} </Title>
       </Page>
       <Menu />
     </>

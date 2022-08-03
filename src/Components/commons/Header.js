@@ -1,6 +1,17 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import user from "../../assets/images/user.png";
 
-export const Header = styled.header`
+export default function Header() {
+  return (
+    <Wrapper>
+      <Link to="/hoje">TrackIt</Link>
+      <img src={user} alt="user_img" />
+    </Wrapper>
+  );
+}
+
+const Wrapper = styled.header`
   width: 100%;
   max-width: 614px;
   height: 70px;

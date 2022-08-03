@@ -3,12 +3,12 @@ import Menu from "../commons/Menu";
 import { Page } from "../../Styles/Page";
 import { Title } from "../../Styles/Title";
 
-export default function Habits() {
+export default function Historic() {
   return (
     <>
       <Header />
       <Page>
-        <Title>Meus hábitos</Title>
+        <Title>Histórico</Title>
       </Page>
       <Menu />
     </>
