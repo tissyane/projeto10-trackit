@@ -4,29 +4,26 @@ import styled from "styled-components";
 import Context from "../Contexts/Context";
 import { Input } from "../../Styles/Input";
 import { createHabit } from "../../Services/api";
-import { getHabits } from "../../Services/api";
+
 import ContextHabits from "../Contexts/ContextHabits";
 import { ThreeDots } from "react-loader-spinner";
+import { BtnDay } from "../../Styles/BtnDay";
 
 export default function HabitsForm() {
-  const { setShowForm, habit, setHabit, days, setDays, setUserHabits } =
-    useContext(ContextHabits);
+  const {
+    setShowForm,
+    habit,
+    setHabit,
+    days,
+    setDays,
+
+    showHabits,
+  } = useContext(ContextHabits);
   const [disabled, setDisabled] = useState(false);
   const { login } = useContext(Context);
   const [clicked, setClicked] = useState(false);
 
   const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
-
-  function showHabits() {
-    const promise = getHabits(login.token);
-    promise.then((response) => {
-      console.log(response.data);
-    });
-
-    promise.catch((error) => {
-      alert("Erro ao mostrar hábitos");
-    });
-  }
 
   function handleDays(e, index) {
     e.preventDefault();
@@ -51,6 +48,9 @@ export default function HabitsForm() {
     const promise = createHabit(body, login.token);
     promise.then((response) => {
       showHabits();
+      setShowForm(false);
+      setHabit("");
+      setDays([]);
     });
 
     promise.catch((error) => {
@@ -58,11 +58,6 @@ export default function HabitsForm() {
       setDisabled(false);
     });
     setDisabled(true);
-  }
-
-  function cancel(e) {
-    e.preventDefault();
-    setShowForm(false);
   }
 
   return (
@@ -78,18 +73,18 @@ export default function HabitsForm() {
         }}
       />
       <div>
-        {weekdays.map((weekdays, index) => (
-          <BtnDays
+        {weekdays.map((weekday, index) => (
+          <BtnDay
             disabled={disabled}
             clicked={days.includes(index)}
             onClick={(e) => handleDays(e, index)}
           >
-            {weekdays}
-          </BtnDays>
+            {weekday}
+          </BtnDay>
         ))}
       </div>
       <WrapperActions>
-        <button className="cancel" onClick={cancel}>
+        <button className="cancel" onClick={() => setShowForm(false)}>
           Cancelar
         </button>
         <button className="save" type="submit" disabled={disabled}>
@@ -116,7 +111,6 @@ const FormWrapper = styled.form`
   div {
     display: flex;
     margin-top: 10px;
-    gap: 4px;
     margin-left: 20px;
   }
 `;
@@ -124,18 +118,6 @@ const FormWrapper = styled.form`
 const InputForm = styled(Input)`
   width: calc(100% - 40px);
   margin: 0 20px;
-`;
-
-const BtnDays = styled.button`
-  height: 30px;
-  width: 30px;
-  background-color: ${(props) => (props.clicked ? "#CFCFCF" : "#fff")};
-  color: ${(props) => (props.clicked ? "#FFF" : "#CFCFCF")};
-  border: 1px solid #d5d5d5;
-  border-radius: 5px;
-
-  font-size: 19.976px;
-  line-height: 25px;
 `;
 
 const WrapperActions = styled.div`
