@@ -31,7 +31,7 @@ export default function Login() {
     const promise = logIn(form);
     promise.then((response) => {
       setLogin(response.data);
-      navigate("/habitos"); //TODO:Change to /hoje
+      navigate("/hoje");
     });
 
     promise.catch((error) => {

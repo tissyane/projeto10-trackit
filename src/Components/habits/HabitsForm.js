@@ -1,13 +1,15 @@
-import { useState } from "react";
-import { useContext } from "react";
-import styled from "styled-components";
+import { useState, useContext } from "react";
+
 import Context from "../Contexts/Context";
+import ContextHabits from "../Contexts/ContextHabits";
+
+import styled from "styled-components";
 import { Input } from "../../Styles/Input";
+import { BtnDay } from "../../Styles/BtnDay";
+
 import { createHabit } from "../../Services/api";
 
-import ContextHabits from "../Contexts/ContextHabits";
 import { ThreeDots } from "react-loader-spinner";
-import { BtnDay } from "../../Styles/BtnDay";
 
 export default function HabitsForm() {
   const {

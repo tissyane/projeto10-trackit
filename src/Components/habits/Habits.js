@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
-import { useContext } from "react";
-import Header from "../commons/Header";
-import Menu from "../commons/Menu";
+import { useEffect, useState, useContext } from "react";
+
+import Context from "../Contexts/Context";
+import ContextHabits from "../Contexts/ContextHabits";
+
+import styled from "styled-components";
 import { Page } from "../../Styles/Page";
 import { Title } from "../../Styles/Title";
 import { Button } from "../../Styles/Button";
-import styled from "styled-components";
-import HabitsForm from "./HabitsForm";
-import Context from "../Contexts/Context";
-import ContextHabits from "../Contexts/ContextHabits";
-import { getHabits } from "../../Services/api";
 import { BtnDay } from "../../Styles/BtnDay";
+
+import Header from "../commons/Header";
+import Menu from "../commons/Menu";
+import HabitsForm from "./HabitsForm";
+
+import { getHabits } from "../../Services/api";
+
 import { BsTrash } from "react-icons/bs";
 
 function HabitItem({ userhabit, index }) {
@@ -130,7 +134,7 @@ const HabitWrapper = styled.div`
   margin: 10px 0;
   padding: 0 10px 18px 15px;
   border-radius: 5px;
-  background-color: white;
+  background: #ffffff;
   display: flex;
   justify-content: space-between;
 

@@ -37,10 +37,6 @@ function uncheckHabit(body, token) {
   return promise;
 }
 
-/* Requições Get 
-
-Para mostrar hábitos */
-
 function getHabits(token) {
   const promise = axios.get(`${URL}/habits`, {
     headers: { Authorization: `Bearer ${token}` },
@@ -48,12 +44,14 @@ function getHabits(token) {
   return promise;
 }
 
-/* Para mostrar hábitos do dia */
-
-function getTodayHabits() {
-  const promise = axios.get(`${URL}/habits/today`);
+function getTodayHabits(token) {
+  const promise = axios.get(`${URL}/habits/today`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   return promise;
 }
+
+/* Requições Get 
 
 /* Para mostrar histórico */
 
