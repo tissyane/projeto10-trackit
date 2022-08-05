@@ -6,11 +6,12 @@ import { Input } from "../../Styles/Input";
 import { createHabit } from "../../Services/api";
 import { getHabits } from "../../Services/api";
 import ContextHabits from "../Contexts/ContextHabits";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function HabitsForm() {
   const { setShowForm, habit, setHabit, days, setDays, setUserHabits } =
     useContext(ContextHabits);
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
   const { login } = useContext(Context);
   const [clicked, setClicked] = useState(false);
 
@@ -26,7 +27,6 @@ export default function HabitsForm() {
       alert("Erro ao mostrar hábitos");
     });
   }
-  showHabits();
 
   function handleDays(e, index) {
     e.preventDefault();
@@ -49,20 +49,29 @@ export default function HabitsForm() {
     };
 
     const promise = createHabit(body, login.token);
-    promise.then((response) => {});
+    promise.then((response) => {
+      showHabits();
+    });
 
     promise.catch((error) => {
       alert("Erro ao cadastrar hábito");
+      setDisabled(false);
     });
+    setDisabled(true);
+  }
 
+  function cancel(e) {
+    e.preventDefault();
     setShowForm(false);
   }
 
   return (
-    <FormWrapper>
+    <FormWrapper onSubmit={submitHabit}>
       <InputForm
         type="text"
         name="habit"
+        value={habit}
+        disabled={disabled}
         placeholder="nome do hábito"
         onChange={(e) => {
           setHabit(e.target.value);
@@ -71,6 +80,7 @@ export default function HabitsForm() {
       <div>
         {weekdays.map((weekdays, index) => (
           <BtnDays
+            disabled={disabled}
             clicked={days.includes(index)}
             onClick={(e) => handleDays(e, index)}
           >
@@ -79,11 +89,15 @@ export default function HabitsForm() {
         ))}
       </div>
       <WrapperActions>
-        <button className="cancel" onClick={() => setShowForm(false)}>
+        <button className="cancel" onClick={cancel}>
           Cancelar
         </button>
-        <button className="save" onClick={(e) => submitHabit(e)}>
-          Salvar
+        <button className="save" type="submit" disabled={disabled}>
+          {disabled ? (
+            <ThreeDots color="#FFF" height={20} width={50} />
+          ) : (
+            "Salvar"
+          )}
         </button>
       </WrapperActions>
     </FormWrapper>
@@ -122,10 +136,6 @@ const BtnDays = styled.button`
 
   font-size: 19.976px;
   line-height: 25px;
-
-  &:disabled {
-    background-color: red;
-  }
 `;
 
 const WrapperActions = styled.div`
@@ -153,5 +163,9 @@ const WrapperActions = styled.div`
     background-color: var(--blue);
     color: var(--white);
     border-radius: 4.63636px;
+
+    &:disabled {
+      opacity: 0.7;
+    }
   }
 `;

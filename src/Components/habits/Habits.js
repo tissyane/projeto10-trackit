@@ -13,7 +13,7 @@ export default function Habits() {
   const [showForm, setShowForm] = useState(false);
   const [habit, setHabit] = useState("");
   const [days, setDays] = useState([]);
-  const [userHabits, setUserHabits] = useState([null]);
+  const [userHabits, setUserHabits] = useState([]);
 
   return (
     <ContextHabits.Provider
@@ -26,10 +26,16 @@ export default function Habits() {
           <SmallButton onClick={() => setShowForm(true)}>+</SmallButton>
         </Top>
         {showForm ? <HabitsForm /> : ""}
-        <div>
-          if (userHabits.length === 0){" "}
-          {"Você ainda não tem nenhum hábito cadastrado"}
-        </div>
+        <HabitSection>
+          {userHabits.length === 0 ? (
+            <span>
+              Você não tem nenhum hábito cadastrado ainda. Adicione um hábito
+              para começar a trackear!
+            </span>
+          ) : (
+            <></>
+          )}
+        </HabitSection>
       </Page>
 
       <Menu />
@@ -46,4 +52,14 @@ const Top = styled.div`
 const SmallButton = styled(Button)`
   width: 40px;
   height: 35px;
+`;
+
+const HabitSection = styled.div`
+  margin-top: 28px;
+  span {
+    font-size: 17.976px;
+    line-height: 22px;
+
+    color: #666666;
+  }
 `;
