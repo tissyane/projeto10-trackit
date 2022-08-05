@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import styled from "styled-components";
-import Context from "../Context";
+import Context from "../Contexts/Context";
 
 export default function Header() {
   const { login } = useContext(Context);

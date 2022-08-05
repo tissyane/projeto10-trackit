@@ -10,7 +10,7 @@ import Logo from "../commons/Logo";
 
 import { Button } from "../../Styles/Button";
 import { Input } from "../../Styles/Input";
-import Context from "../Context";
+import Context from "../Contexts/Context";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });

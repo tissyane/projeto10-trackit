@@ -3,7 +3,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import Context from "../Context";
+import Context from "../Contexts/Context";
 
 export default function Menu() {
   const { percentage } = useContext(Context);

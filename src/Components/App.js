@@ -2,13 +2,13 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import GlobalStyle from "../Styles/GlobalStyles";
-import Context from "./Context";
 
 import Login from "./logIn/LogIn";
 import SignUp from "./signUp/SignUp";
 import Today from "./today/Today";
 import Habits from "./habits/Habits";
 import Historic from "./historic/Historic";
+import Context from "./Contexts/Context";
 
 export default function App() {
   const [login, setLogin] = useState(null);
