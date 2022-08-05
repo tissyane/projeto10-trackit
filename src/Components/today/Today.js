@@ -1,24 +1,37 @@
 import { useEffect, useState, useContext } from "react";
+
 import Context from "../Contexts/Context";
-import Header from "../commons/Header";
-import Menu from "../commons/Menu";
+
+import styled from "styled-components";
 import { Page } from "../../Styles/Page";
 import { Title } from "../../Styles/Title";
+
+import Header from "../commons/Header";
+import Menu from "../commons/Menu";
+
+import { getTodayHabits } from "../../Services/api";
+
+import { BsCheckLg } from "react-icons/bs";
 import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
 import updateLocale from "dayjs/plugin/updateLocale";
-import { BsCheckLg } from "react-icons/bs";
-import { getTodayHabits } from "../../Services/api";
-import styled from "styled-components";
 
 function TodayHabitsItem({ userhabit }) {
   return (
     <TodayWrapper>
-      <Container key={userhabit.id}>
+      <div key={userhabit.id}>
         <h4>{userhabit.name}</h4>
-        <p>{`Sequência atual:${userhabit.currentSequence} dias`}</p>
-        <p>{`Seu recorde: ${userhabit.highestSequence} dias`}</p>
-      </Container>
+        <p>
+          {userhabit.currentSequence === 1
+            ? `Sequência atual: ${userhabit.currentSequence} dia`
+            : `Sequência atual: ${userhabit.currentSequence} dias`}
+        </p>
+        <p>
+          {userhabit.currentSequence === 1
+            ? `Seu recorde: ${userhabit.currentSequence} dia`
+            : `Seu recorde: ${userhabit.currentSequence} dias`}
+        </p>
+      </div>
       <Check>
         <BsCheckLg color="#FFF" fontSize={30} />
       </Check>
@@ -27,7 +40,8 @@ function TodayHabitsItem({ userhabit }) {
 }
 
 export default function Today() {
-  const { login } = useContext(Context);
+  const { login, percentage, setPercentage } = useContext(Context);
+
   const [todayHabit, setTodayHabit] = useState([]);
   dayjs.locale("pt-br");
   dayjs.extend(updateLocale);
@@ -61,6 +75,14 @@ export default function Today() {
       <Header />
       <Page>
         <Title>{dayjs().format("dddd, DD/MM")}</Title>
+        <Subtitle>
+          {percentage === 0 ? (
+            <span className="none">Nenhum hábito concluído ainda</span>
+          ) : (
+            <span className="done">{`${percentage}% dos hábitos concluídos`}</span>
+          )}
+        </Subtitle>
+
         {todayHabit.map((userhabit) => (
           <TodayHabitsItem key={userhabit.id} userhabit={userhabit} />
         ))}
@@ -69,10 +91,6 @@ export default function Today() {
     </>
   );
 }
-
-const Container = styled.div`
-  margin-top: 0;
-`;
 
 const TodayWrapper = styled.div`
   height: 91px;
@@ -87,7 +105,7 @@ const TodayWrapper = styled.div`
     font-size: 19.976px;
     line-height: 25px;
     color: #666666;
-    margin-bottom: 7px;
+    margin-bottom: 6px;
   }
 
   p {
@@ -101,8 +119,25 @@ const TodayWrapper = styled.div`
 const Check = styled.div`
   width: 69px;
   height: 69px;
-  background-color: #e7e7e7;
+
+  background: #ebebeb;
+  border: 1px solid #e7e7e7;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const Subtitle = styled.div`
+  margin-bottom: 28px;
+  font-size: 17.976px;
+  line-height: 22px;
+
+  .none {
+    color: #bababa;
+  }
+
+  .done {
+    color: #8fc549;
+  }
 `;

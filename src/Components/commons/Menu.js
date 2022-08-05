@@ -12,14 +12,15 @@ export default function Menu() {
     <Wrapper>
       <Link to="/habitos">Hábitos</Link>
 
-      <Link style={{ width: 90, height: 90, marginBottom: 50 }} to="/hoje">
+      <Link style={{ width: 90, height: 90, marginBottom: 30 }} to="/hoje">
         <CircularProgressbar
           value={percentage}
           text={`Hoje`}
           background
           backgroundPadding={6}
           styles={buildStyles({
-            backgroundColor: "#3e98c7",
+            backgroundColor: "#52B6FF",
+            textSize: "18px",
             textColor: "#fff",
             pathColor: "#fff",
             trailColor: "transparent",
@@ -34,7 +35,6 @@ export default function Menu() {
 
 const Wrapper = styled.footer`
   width: 100%;
-  max-width: 614px;
   height: 70px;
   padding: 0 35px;
   margin: 0 auto;

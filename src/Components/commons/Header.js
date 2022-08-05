@@ -18,7 +18,7 @@ export default function Header() {
 
 const Wrapper = styled.header`
   width: 100%;
-  max-width: 614px;
+
   height: 70px;
   padding: 0 18px;
   margin: 0 auto;
