@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import Context from "../contexts/Context";
 import styled from "styled-components";
 import { BsCheckLg } from "react-icons/bs";

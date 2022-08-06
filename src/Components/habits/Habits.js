@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { Page } from "../../Styles/Page";
 import { Title } from "../../Styles/Title";
 import { Button } from "../../Styles/Button";
-import { BtnDay } from "../../Styles/BtnDay";
 
 import Header from "../commons/Header";
 import Menu from "../commons/Menu";
@@ -15,32 +14,7 @@ import HabitsForm from "./HabitsForm";
 
 import { getHabits } from "../../Services/api";
 
-import { BsTrash } from "react-icons/bs";
-
-function HabitItem({ userhabit, index }) {
-  const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
-  return (
-    <HabitWrapper>
-      <Container key={userhabit.id}>
-        <h4>{userhabit.name}</h4>
-        <div>
-          {weekdays.map((weekday, index) => (
-            <BtnDay
-              key={index}
-              disabled
-              clicked={userhabit.days.includes(index)}
-            >
-              {weekday}
-            </BtnDay>
-          ))}
-        </div>
-      </Container>
-      <Trash>
-        <BsTrash cursor={"pointer"} />
-      </Trash>
-    </HabitWrapper>
-  );
-}
+import { HabitItem } from "./HabitItem";
 
 export default function Habits() {
   const [showForm, setShowForm] = useState(false);
@@ -103,7 +77,6 @@ export default function Habits() {
   );
 }
 
-const Container = styled.div``;
 const Top = styled.div`
   display: flex;
   justify-content: space-between;
@@ -127,27 +100,4 @@ const HabitSection = styled.div`
 
 const RenderHabits = styled.div`
   margin-top: 10px;
-`;
-
-const HabitWrapper = styled.div`
-  margin: 10px 0;
-  padding: 0 10px 18px 15px;
-  border-radius: 5px;
-  background: #ffffff;
-  display: flex;
-  justify-content: space-between;
-
-  h4 {
-    font-size: 19.976px;
-    line-height: 25px;
-    color: #666666;
-  }
-
-  div {
-    margin-top: 10px;
-  }
-`;
-
-const Trash = styled.div`
-  margin-top: 11px;
 `;

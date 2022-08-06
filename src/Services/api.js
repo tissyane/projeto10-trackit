@@ -60,9 +60,10 @@ function getHistory() {
 
 Para deletar hábitos */
 
-function deleteHabits() {
-  const promise = axios.delete(`${URL}/habits/ID_DO_HABITO`);
-  return promise;
+function deleteHabits(id, token) {
+  return axios.delete(`${URL}/habits/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 }
 
 export {
