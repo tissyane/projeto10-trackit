@@ -12,7 +12,7 @@ import TodayPage from "./today/TodayPage";
 
 export default function App() {
   const [login, setLogin] = useState(null);
-  const [percentage, setPercentage] = useState(0);
+  const [percentage, setPercentage] = useState(null);
 
   return (
     <>

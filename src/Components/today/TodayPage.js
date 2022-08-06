@@ -12,8 +12,9 @@ import Menu from "../commons/Menu";
 import { getTodayHabits } from "../../Services/api";
 
 import dayjs from "dayjs";
-import "dayjs/locale/pt-br";
+
 import updateLocale from "dayjs/plugin/updateLocale";
+import "dayjs/locale/pt-br";
 import { TodayHabitsItem } from "./TodayHabitsItem";
 
 export default function TodayPage() {
@@ -34,23 +35,25 @@ export default function TodayPage() {
     ],
   });
 
-  useEffect(() => {
+  function todayHabits() {
     const promise = getTodayHabits(login.token);
     promise.then((response) => {
       setHabits(response.data);
-      const sizeHabits = habits?.length;
-      if (!sizeHabits) {
+      const sizeHabits = habits.length;
+      if (sizeHabits === 0) {
         setPercentage(0);
       } else {
         const sizeCompleteHabits = habits.filter((habit) => habit.done).length;
         setPercentage(Math.round((sizeCompleteHabits * 100) / sizeHabits));
       }
     });
-  }, [login, habits, setPercentage]);
 
-  if (habits.Habit === null) {
-    return "Carregando";
+    promise.catch((error) => {
+      alert("Erro ao mostrar hábitos");
+    });
   }
+
+  useEffect(todayHabits, [login.token, habits, setPercentage]);
 
   return (
     <>

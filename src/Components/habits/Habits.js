@@ -86,6 +86,12 @@ const Top = styled.div`
 const SmallButton = styled(Button)`
   width: 40px;
   height: 35px;
+  padding-bottom: 5px;
+  font-size: 27px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const HabitSection = styled.div`
