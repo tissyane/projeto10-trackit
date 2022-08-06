@@ -5,14 +5,14 @@ import GlobalStyle from "../Styles/GlobalStyles";
 
 import Login from "./logIn/LogIn";
 import SignUp from "./signUp/SignUp";
-import Today from "./today/Today";
 import Habits from "./habits/Habits";
 import Historic from "./historic/Historic";
-import Context from "./Contexts/Context";
+import Context from "./contexts/Context";
+import TodayPage from "./today/TodayPage";
 
 export default function App() {
   const [login, setLogin] = useState(null);
-  const [percentage, setPercentage] = useState(75);
+  const [percentage, setPercentage] = useState(0);
 
   return (
     <>
@@ -23,7 +23,7 @@ export default function App() {
             <Route path="/" element={<Login />} />
             <Route path="/cadastro" element={<SignUp />} />
             <Route path="/habitos" element={<Habits />} />
-            <Route path="/hoje" element={<Today />} />
+            <Route path="/hoje" element={<TodayPage />} />
             <Route path="/historico" element={<Historic />} />
           </Routes>
         </BrowserRouter>

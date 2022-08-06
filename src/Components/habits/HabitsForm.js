@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 
-import Context from "../Contexts/Context";
-import ContextHabits from "../Contexts/ContextHabits";
+import Context from "../contexts/Context";
+import ContextHabits from "../contexts/ContextHabits";
 
 import styled from "styled-components";
 import { Input } from "../../Styles/Input";

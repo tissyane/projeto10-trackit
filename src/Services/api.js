@@ -17,24 +17,20 @@ function createHabit(body, token) {
   return promise;
 }
 
-/* Requições Post*/
-
-/* Para concluir hábito */
-
-function checkHabit(body, token) {
-  const promise = axios.post(`${URL}/habits/ID_DO_HABITO/check`, body, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  return promise;
+function checkHabit(id, token) {
+  return axios.post(
+    `${URL}/habits/${id}/check`,
+    {},
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
 }
 
-/* Para desmarcar hábito */
-
-function uncheckHabit(body, token) {
-  const promise = axios.post(`${URL}/habits/ID_DO_HABITO/uncheck`, body, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  return promise;
+function uncheckHabit(id, token) {
+  return axios.post(
+    `${URL}/habits/${id}/uncheck`,
+    {},
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
 }
 
 function getHabits(token) {

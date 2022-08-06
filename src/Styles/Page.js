@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 export const Page = styled.div`
-  margin-bottom: 20px;
+  height: 100vh;
   padding: 98px 18px;
   background-color: #f2f2f2;
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;

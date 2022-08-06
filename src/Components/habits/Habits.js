@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 
-import Context from "../Contexts/Context";
-import ContextHabits from "../Contexts/ContextHabits";
+import Context from "../contexts/Context";
+import ContextHabits from "../contexts/ContextHabits";
 
 import styled from "styled-components";
 import { Page } from "../../Styles/Page";
@@ -36,7 +36,7 @@ function HabitItem({ userhabit, index }) {
         </div>
       </Container>
       <Trash>
-        <BsTrash />
+        <BsTrash cursor={"pointer"} />
       </Trash>
     </HabitWrapper>
   );
@@ -130,7 +130,6 @@ const RenderHabits = styled.div`
 `;
 
 const HabitWrapper = styled.div`
-  height: 91px;
   margin: 10px 0;
   padding: 0 10px 18px 15px;
   border-radius: 5px;
