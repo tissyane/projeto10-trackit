@@ -11,7 +11,7 @@ import { createHabit } from "../../Services/api";
 
 import { ThreeDots } from "react-loader-spinner";
 
-export default function HabitsForm() {
+export default function HabitsForm(index) {
   const {
     setShowForm,
     habit,
@@ -56,7 +56,7 @@ export default function HabitsForm() {
     });
 
     promise.catch((error) => {
-      alert("Erro ao cadastrar hábito");
+      alert(error.response.data.message);
       setDisabled(false);
     });
     setDisabled(true);
@@ -65,10 +65,12 @@ export default function HabitsForm() {
   return (
     <FormWrapper onSubmit={submitHabit}>
       <InputForm
+        key={index}
         type="text"
         name="habit"
         value={habit}
         disabled={disabled}
+        required
         placeholder="nome do hábito"
         onChange={(e) => {
           setHabit(e.target.value);
@@ -77,6 +79,7 @@ export default function HabitsForm() {
       <div className="days">
         {weekdays.map((weekday, index) => (
           <BtnDay
+            key={days.id}
             disabled={disabled}
             clicked={days.includes(index)}
             onClick={(e) => handleDays(e, index)}
@@ -89,7 +92,7 @@ export default function HabitsForm() {
         <button className="cancel" onClick={() => setShowForm(false)}>
           Cancelar
         </button>
-        <div>
+        <div key={index}>
           <button className="save" type="submit" disabled={disabled}>
             {disabled ? (
               <ThreeDots color="#FFF" height={15} width={40} />

@@ -5,8 +5,4 @@ export const Page = styled.div`
   padding: 98px 18px;
   background-color: #f2f2f2;
   overflow-y: scroll;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
 `;

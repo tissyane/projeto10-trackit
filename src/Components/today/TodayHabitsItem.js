@@ -2,33 +2,21 @@ import { useContext } from "react";
 import Context from "../contexts/Context";
 import styled from "styled-components";
 import { BsCheckLg } from "react-icons/bs";
-import { getTodayHabits, checkHabit, uncheckHabit } from "../../Services/api";
+import { checkHabit, uncheckHabit } from "../../Services/api";
 
-export function TodayHabitsItem({ habit, setHabits }) {
+export function TodayHabitsItem({ habit, TodayHabits }) {
   const { login } = useContext(Context);
 
   function toogleCheck() {
     if (!habit.done) {
       const promise = checkHabit(habit.id, login.token);
       promise.then((response) => {
-        const prom = getTodayHabits(login.token);
-        prom.then((response) => {
-          setHabits(response.data);
-        });
-        promise.catch((error) => {
-          alert("Erro ao concluir hábitos");
-        });
+        <TodayHabits />;
       });
     } else {
       const promise = uncheckHabit(habit.id, login.token);
       promise.then((response) => {
-        const prom = getTodayHabits(login.token);
-        prom.then((response) => {
-          setHabits(response.data);
-        });
-        promise.catch((error) => {
-          alert("Erro ao desmarcar hábitos");
-        });
+        <TodayHabits />;
       });
     }
   }

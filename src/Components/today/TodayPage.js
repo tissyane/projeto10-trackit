@@ -35,7 +35,7 @@ export default function TodayPage() {
     ],
   });
 
-  function todayHabits() {
+  function TodayHabits() {
     const promise = getTodayHabits(login.token);
     promise.then((response) => {
       setHabits(response.data);
@@ -53,7 +53,7 @@ export default function TodayPage() {
     });
   }
 
-  useEffect(todayHabits, [login.token, habits, setPercentage]);
+  useEffect(TodayHabits, [login.token, habits, setPercentage]);
 
   return (
     <>
@@ -69,7 +69,12 @@ export default function TodayPage() {
         </Subtitle>
 
         {habits.map((habit) => (
-          <TodayHabitsItem key={habit.id} habit={habit} setHabits={setHabits} />
+          <TodayHabitsItem
+            key={habit.id}
+            habit={habit}
+            setHabits={setHabits}
+            TodayHabits={TodayHabits}
+          />
         ))}
       </Page>
       <Menu />

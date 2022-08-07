@@ -34,26 +34,25 @@ function uncheckHabit(id, token) {
 }
 
 function getHabits(token) {
-  const promise = axios.get(`${URL}/habits`, {
+  return axios.get(`${URL}/habits`, {
     headers: { Authorization: `Bearer ${token}` },
   });
-  return promise;
 }
 
 function getTodayHabits(token) {
-  const promise = axios.get(`${URL}/habits/today`, {
+  return axios.get(`${URL}/habits/today`, {
     headers: { Authorization: `Bearer ${token}` },
   });
-  return promise;
 }
 
 /* Requições Get 
 
 /* Para mostrar histórico */
 
-function getHistory() {
-  const promise = axios.get(`${URL}/habits/history/daily`);
-  return promise;
+function getHistory(token) {
+  return axios.get(`${URL}/habits/history/daily`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 }
 
 /* Requições Delete
