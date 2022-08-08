@@ -21,7 +21,7 @@ export default function HabitsPage() {
   const [showForm, setShowForm] = useState(false);
   const [habit, setHabit] = useState("");
   const [days, setDays] = useState([]);
-  const [userHabits, setUserHabits] = useState([]);
+  const [userHabits, setUserHabits] = useState(null);
   const { login } = useContext(Context);
 
   function showHabits() {
@@ -37,7 +37,7 @@ export default function HabitsPage() {
 
   useEffect(showHabits, [login.token]);
 
-  if (userHabits.length === 0) {
+  if (userHabits === null) {
     return (
       <Page>
         <Loading />

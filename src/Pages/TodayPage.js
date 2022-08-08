@@ -21,7 +21,7 @@ import "dayjs/locale/pt-br";
 
 export default function TodayPage() {
   const { login, percentage, setPercentage } = useContext(Context);
-  const [habits, setHabits] = useState([]);
+  const [habits, setHabits] = useState(null);
 
   dayjs.locale("pt-br");
 
@@ -42,12 +42,12 @@ export default function TodayPage() {
     const promise = getTodayHabits(login.token);
     promise.then((response) => {
       setHabits(response.data);
-      const sizeHabits = habits.length;
+      const sizeHabits = habits?.length;
       if (sizeHabits === 0) {
         setPercentage(0);
       } else {
-        const sizeCompleteHabits = habits.filter((habit) => habit.done).length;
-        setPercentage(Math.round((sizeCompleteHabits * 100) / sizeHabits));
+        const sizeDoneHabits = habits?.filter((habit) => habit.done).length;
+        setPercentage(Math.round((sizeDoneHabits * 100) / sizeHabits));
       }
     });
 
@@ -58,7 +58,7 @@ export default function TodayPage() {
 
   useEffect(TodayHabits, [login.token, habits, setPercentage]);
 
-  if (habits.length === 0) {
+  if (habits === null) {
     return (
       <Page>
         <Loading />
