@@ -10,6 +10,7 @@ import { Input } from "../../Styles/Input";
 import { logIn } from "../../Services/api";
 
 import { ThreeDots } from "react-loader-spinner";
+import { setUser } from "../../Services/Storage";
 
 export default function LoginForm() {
   const { setLogin } = useContext(Context);
@@ -30,11 +31,12 @@ export default function LoginForm() {
     const promise = logIn(form);
     promise.then((response) => {
       setLogin(response.data);
+      setUser(response.data);
       navigate("/hoje");
     });
 
     promise.catch((error) => {
-      alert("Verifique seus dados!");
+      alert("Houve um erro no seu login. Verifique seus dados!");
       setDisabled(false);
     });
     setDisabled(true);

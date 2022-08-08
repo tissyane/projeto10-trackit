@@ -20,6 +20,6 @@ export default function Loading() {
 
 const LoadingWrapper = styled.div`
   position: fixed;
-  top: 300px;
-  left: calc(100vw - 65%);
+  top: calc(50% - 90px);
+  left: calc(50% - 50px);
 `;

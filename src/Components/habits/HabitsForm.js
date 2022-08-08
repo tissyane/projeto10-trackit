@@ -42,6 +42,10 @@ export default function HabitsForm(index) {
   function submitHabit(e) {
     e.preventDefault();
 
+    if (days.length === 0) {
+      return alert("Selecione pelo menos um dia para criar um novo hábito!");
+    }
+
     const body = {
       name: habit,
       days,
@@ -56,7 +60,7 @@ export default function HabitsForm(index) {
     });
 
     promise.catch((error) => {
-      alert(error.response.data.message);
+      alert("Houve um erro ao cadastrar seu novo hábito. Tente novamente!");
       setDisabled(false);
     });
     setDisabled(true);
@@ -79,7 +83,7 @@ export default function HabitsForm(index) {
       <div className="days">
         {weekdays.map((weekday, index) => (
           <BtnDay
-            key={days.id}
+            key={weekday.id}
             disabled={disabled}
             clicked={days.includes(index)}
             onClick={(e) => handleDays(e, index)}

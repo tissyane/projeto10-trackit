@@ -65,17 +65,6 @@ body, input, button {
 
   }
 
- 
-
-/* .root {
-	width: 100vw;
-	
- max-width: 614px;
-  height: 100vh;
-  margin: 0 auto;  
-  background-color: #FFFFFF;
-} */
-
 :root {
   --dark-blue: #126ba5;
   --blue: #52b6ff;

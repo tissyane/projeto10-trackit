@@ -35,7 +35,7 @@ export default function SignUpForm() {
     });
 
     promise.catch((error) => {
-      alert("Verifique seus dados!");
+      alert("Houve um erro no seu cadastro. Verifique seus dados!");
       setDisabled(false);
     });
     setDisabled(true);

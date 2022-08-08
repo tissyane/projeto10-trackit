@@ -1,29 +1,11 @@
-import { useEffect, useContext, useState } from "react";
-import Context from "../Components/contexts/Context";
 import Header from "../Components/commons/Header";
 import Menu from "../Components/commons/Menu";
 import { Page } from "../Styles/Page";
 import { Title } from "../Styles/Title";
-import { getHistory } from "../Services/api";
+
 import styled from "styled-components";
 
 export default function HistoricPage() {
-  const [historicList, setHistoricList] = useState({});
-  const { login } = useContext(Context);
-
-  // function HistoricHabits() {
-  //   const promise = getHistory(login.token);
-  //   promise.then((response) => {
-  //     setHistoricList(response.data);
-  //     console.log(response.data);
-  //   });
-
-  //   promise.catch((error) => {
-  //     alert("Erro ao mostrar historico");
-  //   });
-  // }
-
-  // useEffect(HistoricHabits, [login.token]);
   return (
     <>
       <Header />

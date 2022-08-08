@@ -10,9 +10,11 @@ import TodayPage from "../Pages/TodayPage";
 import HistoricPage from "../Pages/HistoricPage";
 import Context from "./contexts/Context";
 
+import { getUser } from "../Services/Storage";
+
 export default function App() {
-  const [login, setLogin] = useState(null);
-  const [percentage, setPercentage] = useState(null);
+  const [login, setLogin] = useState(getUser());
+  const [percentage, setPercentage] = useState(0);
 
   return (
     <>
