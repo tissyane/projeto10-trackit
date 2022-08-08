@@ -11,7 +11,9 @@ export default function Header() {
       <Link to="/hoje">
         <h1>TrackIt</h1>
       </Link>
-      <img src={login.image} alt="user_img" />
+      <div>
+        <img src={login.image} alt="user_img" />
+      </div>
     </Wrapper>
   );
 }
@@ -26,7 +28,7 @@ const Wrapper = styled.header`
   background-color: #126ba5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   color: #ffffff;
-
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
