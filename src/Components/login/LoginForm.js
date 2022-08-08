@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import Context from "../contexts/Context";
 
@@ -13,7 +13,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { setUser } from "../../Services/Storage";
 
 export default function LoginForm() {
-  const { setLogin } = useContext(Context);
+  const { login, setLogin } = useContext(Context);
   const [form, setForm] = useState({ email: "", password: "" });
   const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
@@ -41,6 +41,12 @@ export default function LoginForm() {
     });
     setDisabled(true);
   }
+
+  useEffect(() => {
+    if (login !== null) {
+      navigate("/hoje");
+    }
+  }, [login, navigate]);
 
   return (
     <Container>

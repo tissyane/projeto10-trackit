@@ -8,6 +8,9 @@ import SignUpPage from "../Pages/SignUpPage";
 import HabitsPage from "../Pages/HabitsPage";
 import TodayPage from "../Pages/TodayPage";
 import HistoricPage from "../Pages/HistoricPage";
+
+import PrivatePage from "../Components/commons/PrivatePage";
+
 import Context from "./contexts/Context";
 
 import { getUser } from "../Services/Storage";
@@ -24,9 +27,30 @@ export default function App() {
           <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route path="/cadastro" element={<SignUpPage />} />
-            <Route path="/habitos" element={<HabitsPage />} />
-            <Route path="/hoje" element={<TodayPage />} />
-            <Route path="/historico" element={<HistoricPage />} />
+            <Route
+              path="/habitos"
+              element={
+                <PrivatePage>
+                  <HabitsPage />
+                </PrivatePage>
+              }
+            />
+            <Route
+              path="/hoje"
+              element={
+                <PrivatePage>
+                  <TodayPage />
+                </PrivatePage>
+              }
+            />
+            <Route
+              path="/historico"
+              element={
+                <PrivatePage>
+                  <HistoricPage />
+                </PrivatePage>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </Context.Provider>
