@@ -132,6 +132,7 @@ const WrapperActions = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
+  margin-top: 25px;
 
   button {
     font-size: 15.976px;

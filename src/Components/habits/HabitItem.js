@@ -2,14 +2,15 @@ import { useContext } from "react";
 
 import styled from "styled-components";
 import { BtnDay } from "../../Styles/BtnDay";
-import { BsTrash } from "react-icons/bs";
 
 import Context from "../contexts/Context";
 import ContextHabits from "../contexts/ContextHabits";
 
 import { deleteHabits, getHabits } from "../../Services/api";
 
-export function HabitItem({ userhabit, index }) {
+import { BsTrash } from "react-icons/bs";
+
+export default function HabitItem({ userhabit, index }) {
   const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
   const { login } = useContext(Context);
   const { setUserHabits } = useContext(ContextHabits);

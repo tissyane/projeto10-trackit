@@ -3,12 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import GlobalStyle from "../Styles/GlobalStyles";
 
-import Login from "./logIn/LogIn";
-import SignUp from "./signUp/SignUp";
-import Habits from "./habits/Habits";
-import Historic from "./historic/Historic";
+import LoginPage from "../Pages/LoginPage";
+import SignUpPage from "../Pages/SignUpPage";
+import HabitsPage from "../Pages/HabitsPage";
+import TodayPage from "../Pages/TodayPage";
+import HistoricPage from "../Pages/HistoricPage";
 import Context from "./contexts/Context";
-import TodayPage from "./today/TodayPage";
 
 export default function App() {
   const [login, setLogin] = useState(null);
@@ -20,11 +20,11 @@ export default function App() {
       <Context.Provider value={{ login, setLogin, percentage, setPercentage }}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/cadastro" element={<SignUp />} />
-            <Route path="/habitos" element={<Habits />} />
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/cadastro" element={<SignUpPage />} />
+            <Route path="/habitos" element={<HabitsPage />} />
             <Route path="/hoje" element={<TodayPage />} />
-            <Route path="/historico" element={<Historic />} />
+            <Route path="/historico" element={<HistoricPage />} />
           </Routes>
         </BrowserRouter>
       </Context.Provider>

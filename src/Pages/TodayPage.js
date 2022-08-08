@@ -1,27 +1,30 @@
 import { useEffect, useState, useContext } from "react";
 
-import Context from "../contexts/Context";
+import Context from "../Components/contexts/Context";
 
 import styled from "styled-components";
-import { Page } from "../../Styles/Page";
-import { Title } from "../../Styles/Title";
+import { Page } from "../Styles/Page";
+import { Title } from "../Styles/Title";
 
-import Header from "../commons/Header";
-import Menu from "../commons/Menu";
+import Header from "../Components/commons/Header";
+import Menu from "../Components/commons/Menu";
+import Loading from "../Components/commons/Loading";
 
-import { getTodayHabits } from "../../Services/api";
+import TodayHabitsItem from "../Components/today/TodayHabitsItem";
+
+import { getTodayHabits } from "../Services/api";
 
 import dayjs from "dayjs";
 
 import updateLocale from "dayjs/plugin/updateLocale";
 import "dayjs/locale/pt-br";
-import { TodayHabitsItem } from "./TodayHabitsItem";
 
 export default function TodayPage() {
   const { login, percentage, setPercentage } = useContext(Context);
   const [habits, setHabits] = useState([]);
 
   dayjs.locale("pt-br");
+
   dayjs.extend(updateLocale);
   dayjs.updateLocale("pt-br", {
     weekdays: [
@@ -54,6 +57,14 @@ export default function TodayPage() {
   }
 
   useEffect(TodayHabits, [login.token, habits, setPercentage]);
+
+  if (habits.length === 0) {
+    return (
+      <Page>
+        <Loading />
+      </Page>
+    );
+  }
 
   return (
     <>

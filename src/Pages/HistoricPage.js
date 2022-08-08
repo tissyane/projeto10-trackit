@@ -1,13 +1,13 @@
 import { useEffect, useContext, useState } from "react";
-import Context from "../contexts/Context";
-import Header from "../commons/Header";
-import Menu from "../commons/Menu";
-import { Page } from "../../Styles/Page";
-import { Title } from "../../Styles/Title";
-import { getHistory } from "../../Services/api";
+import Context from "../Components/contexts/Context";
+import Header from "../Components/commons/Header";
+import Menu from "../Components/commons/Menu";
+import { Page } from "../Styles/Page";
+import { Title } from "../Styles/Title";
+import { getHistory } from "../Services/api";
 import styled from "styled-components";
 
-export default function Historic() {
+export default function HistoricPage() {
   const [historicList, setHistoricList] = useState({});
   const { login } = useContext(Context);
 

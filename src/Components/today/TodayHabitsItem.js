@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { BsCheckLg } from "react-icons/bs";
 import { checkHabit, uncheckHabit } from "../../Services/api";
 
-export function TodayHabitsItem({ habit, TodayHabits }) {
+export default function TodayHabitsItem({ habit, TodayHabits }) {
   const { login } = useContext(Context);
 
   function toogleCheck() {

@@ -1,22 +1,23 @@
 import { useEffect, useState, useContext } from "react";
 
-import Context from "../contexts/Context";
-import ContextHabits from "../contexts/ContextHabits";
+import Context from "../Components/contexts/Context";
+import ContextHabits from "../Components/contexts/ContextHabits";
 
 import styled from "styled-components";
-import { Page } from "../../Styles/Page";
-import { Title } from "../../Styles/Title";
-import { Button } from "../../Styles/Button";
+import { Page } from "../Styles/Page";
+import { Title } from "../Styles/Title";
+import { Button } from "../Styles/Button";
 
-import Header from "../commons/Header";
-import Menu from "../commons/Menu";
-import HabitsForm from "./HabitsForm";
+import Header from "../Components/commons/Header";
+import Menu from "../Components/commons/Menu";
+import Loading from "../Components/commons/Loading";
 
-import { getHabits } from "../../Services/api";
+import HabitItem from "../Components/habits/HabitItem";
+import HabitsForm from "../Components/habits/HabitsForm";
 
-import { HabitItem } from "./HabitItem";
+import { getHabits } from "../Services/api";
 
-export default function Habits() {
+export default function HabitsPage() {
   const [showForm, setShowForm] = useState(false);
   const [habit, setHabit] = useState("");
   const [days, setDays] = useState([]);
@@ -35,6 +36,14 @@ export default function Habits() {
   }
 
   useEffect(showHabits, [login.token]);
+
+  if (userHabits.length === 0) {
+    return (
+      <Page>
+        <Loading />
+      </Page>
+    );
+  }
 
   return (
     <ContextHabits.Provider
